@@ -24,7 +24,8 @@ class AppDelegate
           placeholder: "me@mail.com",
           type: :email,
           auto_correction: :no,
-          auto_capitalization: :none
+          auto_capitalization: :none,
+          auto_return: true
         }, {
           title: "Password",
           key: :password,
