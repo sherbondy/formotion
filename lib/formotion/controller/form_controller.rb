@@ -51,7 +51,7 @@ module Formotion
 
     def viewDidAppear(animated)
       super
-      first_responder = @form.first_responder
+      first_responder = @form.active_row ? @form.active_row : @form.first_responder
       if first_responder
         row = first_responder.is_a?(Row) ? first_responder : @form.row_for_index_path(first_responder)
         row.text_field.becomeFirstResponder if row && row.text_field
@@ -70,6 +70,8 @@ module Formotion
     end
 
     def pop_subform
+      @temp_first_responder = @form.first_responder
+      @form.first_responder = nil
       if self.navigationController
         self.navigationController.popViewControllerAnimated true
       else
