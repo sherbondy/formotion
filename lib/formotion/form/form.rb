@@ -6,9 +6,8 @@ module Formotion
       :title,
       # If you want to have some internal id to track the form.
       :id,
-      # Specify a row object or the NSIndexPath of a row whose text_field should become first responder
+      # Specify a [row,section] array, or {row: 0, section: 1} hash of a row whose text_field should become first responder
       # Defaults to nil
-      # Caveat: currently triggered every time the view appears.
       :first_responder
     ]
     PROPERTIES.each {|prop|
@@ -84,6 +83,14 @@ module Formotion
     # row = @form.row_for_index_path(NSIndexPath.indexPathForRow(0, inSection: 0))
     def row_for_index_path(index_path)
       self.sections[index_path.section].rows[index_path.row]
+    end
+
+    # Accepts a [row, section] array and gives back a Formotion::Row
+    # EX
+    # row = @form.row_for_index_array([0,0])
+    def row_for_index_array(index_array)
+      row, section = index_array
+      self.sections[section].rows[row]
     end
 
     #########################

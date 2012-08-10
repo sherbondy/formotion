@@ -53,7 +53,11 @@ module Formotion
       super
       first_responder = @form.active_row ? @form.active_row : @form.first_responder
       if first_responder
-        row = first_responder.is_a?(Row) ? first_responder : @form.row_for_index_path(first_responder)
+        row_array = case first_responder
+                      when Array then first_responder
+                      when Hash  then first_responder.values_at(:row,:section)
+                    end
+        row = @form.row_for_index_array(row_array)
         row.text_field.becomeFirstResponder if row && row.text_field
       end
     end

@@ -31,7 +31,7 @@ module Formotion
       # given by enablesReturnKeyAutomatically, bool.
       # EX true, false, :yes, :no
       # DEFAULT is false
-      :auto_return,
+      :auto_enable_return,
       # given by a  UITextAutocorrectionType___ integer, string, or symbol
       # EX :yes, :no, :default
       :auto_correction,
@@ -75,7 +75,7 @@ module Formotion
     PROPERTIES.each {|prop|
       attr_accessor prop
     }
-    BOOLEAN_PROPERTIES = [:secure, :auto_return, :indented, :deletable, :remove_on_delete]
+    BOOLEAN_PROPERTIES = [:secure, :auto_enable_return, :indented, :deletable, :remove_on_delete]
     BOOLEAN_PROPERTIES.each { |prop|
       alias_method "#{prop}?", prop
     }

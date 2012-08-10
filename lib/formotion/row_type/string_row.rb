@@ -39,7 +39,7 @@ module Formotion
 
         field.secureTextEntry = true if row.secure?
         field.returnKeyType = row.return_key || UIReturnKeyNext
-        field.enablesReturnKeyAutomatically = true if row.auto_return?
+        field.enablesReturnKeyAutomatically = true if row.auto_enable_return?
         field.autocapitalizationType = row.auto_capitalization if row.auto_capitalization
         field.autocorrectionType = row.auto_correction if row.auto_correction
         field.clearButtonMode = row.clear_button || UITextFieldViewModeWhileEditing
