@@ -30,12 +30,6 @@ module Formotion
   # This allows for proper highlighting behavior on selection
   class FormotionTableViewCell < UITableViewCell
 
-    def initWithStyle(style, reuseIdentifier:reuse_identifier)
-      super
-
-      self
-    end
-
     def setHighlighted(highlighted, animated:animated)
       super
       # relying on this hack since there's no nice way to get the text view right now
