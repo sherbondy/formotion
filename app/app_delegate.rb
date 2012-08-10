@@ -5,6 +5,7 @@ class AppDelegate
     @window = UIWindow.alloc.initWithFrame(UIScreen.mainScreen.bounds)
 
     form = Formotion::Form.new({
+      first_responder: NSIndexPath.indexPathForRow(2, inSection:0),
       sections: [{
         title: "Register",
         rows: [{
@@ -31,14 +32,16 @@ class AppDelegate
           key: :password,
           placeholder: "required",
           type: :string,
-          secure: true
+          secure: true,
+          auto_return: true
         }, {
           title: "Password",
           subtitle: "Confirmation",
           key: :confirm,
           placeholder: "required",
           type: :string,
-          secure: true
+          secure: true,
+          auto_return: true
         }, {
           title: "Switch",
           key: :switch,

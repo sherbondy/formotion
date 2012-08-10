@@ -4,6 +4,7 @@ module Formotion
       attr_accessor :row, :tableView
 
       FIELD_BUFFER = Device.iphone? ? 20 : 64
+      DEFAULT_TEXT_COLOR = "#385387".to_color
 
       def tableView
         @tableView ||= self.row.form.table

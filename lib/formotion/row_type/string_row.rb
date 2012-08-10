@@ -19,6 +19,8 @@ module Formotion
       # Also does the layoutSubviews swizzle trick
       # to size the UITextField so it won't bump into the titleLabel.
       def build_cell(cell)
+        cell.selectionStyle = UITableViewCellSelectionStyleNone
+
         field = UITextField.alloc.initWithFrame(CGRectZero)
         field.tag = TEXT_FIELD_TAG
 
@@ -31,6 +33,7 @@ module Formotion
         field.clearButtonMode = UITextFieldViewModeWhileEditing
         field.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter
         field.textAlignment = UITextAlignmentRight
+        field.textColor = DEFAULT_TEXT_COLOR
 
         field.keyboardType = keyboardType
 

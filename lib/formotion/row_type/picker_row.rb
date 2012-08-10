@@ -5,6 +5,7 @@ module Formotion
     class PickerRow < StringRow
 
       def after_build(cell)
+        cell.selectionStyle = UITableViewCellSelectionStyleBlue
         self.row.text_field.inputView = self.picker
       end
 

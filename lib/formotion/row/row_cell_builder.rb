@@ -13,7 +13,7 @@ module Formotion
     def self.make_cell(row)
       cell, text_field = nil
 
-      cell = UITableViewCell.alloc.initWithStyle(row.object.cell_style, reuseIdentifier:row.reuse_identifier)
+      cell = FormotionTableViewCell.alloc.initWithStyle(row.object.cell_style, reuseIdentifier:row.reuse_identifier)
 
       cell.accessoryType = cell.editingAccessoryType = UITableViewCellAccessoryNone
       cell.textLabel.text = row.title
@@ -25,4 +25,34 @@ module Formotion
     end
 
   end
+
+  # Currently a thin wrapper over UITableViewCell
+  # This allows for proper highlighting behavior on selection
+  class FormotionTableViewCell < UITableViewCell
+
+    def initWithStyle(style, reuseIdentifier:reuse_identifier)
+      super
+
+      self
+    end
+
+    def setHighlighted(highlighted, animated:animated)
+      super
+      # relying on this hack since there's no nice way to get the text view right now
+      text_view_tag = Formotion::RowType::TextRow.const_get("TEXT_VIEW_TAG")
+      text_view = self.viewWithTag(text_view_tag)
+
+      default_color = Formotion::RowType::Base.const_get("DEFAULT_TEXT_COLOR")
+      if text_view && self.selectionStyle != UITableViewCellSelectionStyleNone
+        animation = lambda { text_view.textColor = highlighted ? UIColor.whiteColor : default_color }
+        if animated
+          UIView.animateWithDuration(0.5, animations:animation)
+        else
+          animation.call
+        end
+      end
+    end
+
+  end
+
 end

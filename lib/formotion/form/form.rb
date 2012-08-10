@@ -5,7 +5,11 @@ module Formotion
       # (so navigation bars will reflect it).
       :title,
       # If you want to have some internal id to track the form.
-      :id
+      :id,
+      # Specify a row object or the NSIndexPath of a row whose text_field should become first responder
+      # Defaults to nil
+      # Caveat: currently triggered every time the view appears.
+      :first_responder
     ]
     PROPERTIES.each {|prop|
       attr_accessor prop

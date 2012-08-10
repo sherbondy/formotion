@@ -42,6 +42,7 @@ module Formotion
       # EX :never, :while_editing
       # DEFAULT is nil, which is used as :while_editing
       :clear_button,
+      
       # row height as integer; used for heightForRowAtIndexPath
       # EX 200
       # DEFAULT is nil, which is used as the tableView.row_height

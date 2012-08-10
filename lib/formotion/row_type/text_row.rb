@@ -8,6 +8,7 @@ module Formotion
       attr_accessor :field
 
       def build_cell(cell)
+        cell.selectionStyle = UITableViewCellSelectionStyleNone
 
         @field = UITextView.alloc.initWithFrame(CGRectZero)
         field.backgroundColor = UIColor.clearColor

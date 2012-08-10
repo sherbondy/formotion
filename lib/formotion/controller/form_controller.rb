@@ -49,6 +49,15 @@ module Formotion
       @form.controller = self
     end
 
+    def viewDidAppear(animated)
+      super
+      first_responder = @form.first_responder
+      if first_responder
+        row = first_responder.is_a?(Row) ? first_responder : @form.row_for_index_path(first_responder)
+        row.text_field.becomeFirstResponder if row && row.text_field
+      end
+    end
+
     # Subview Methods
     def push_subform(form)
       @subform_controller = self.class.alloc.initWithForm(form)

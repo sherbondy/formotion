@@ -37,6 +37,7 @@ module Formotion
       end
 
       def after_build(cell)
+        cell.selectionStyle = UITableViewCellSelectionStyleBlue
         self.row.text_field.inputView = self.picker
         update
       end
